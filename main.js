@@ -19,7 +19,33 @@ const colors = [
   "#7d5fff",
 ];
 
-function onclick(e) {
+let isPainting = false;
+
+function onMove(e) {
+  if (isPainting) {
+    // const color = colors[Math.floor(Math.random() * colors.length)];
+    // ctx.strokeStyle = color;
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    return;
+  }
+  ctx.moveTo(e.offsetX, e.offsetY);
+}
+
+function startPainting() {
+  isPainting = true;
+}
+
+function cancelPainting() {
+  isPainting = false;
+}
+
+canvas.addEventListener("mousemove", onMove);
+canvas.addEventListener("mousedown", startPainting);
+canvas.addEventListener("mouseup", cancelPainting);
+canvas.addEventListener("mouseleave", cancelPainting);
+
+/* function onclick(e) {
   ctx.beginPath();
   ctx.moveTo(0, 0);
   const color = colors[Math.floor(Math.random() * colors.length)];
@@ -28,7 +54,7 @@ function onclick(e) {
   ctx.stroke();
 }
 
-canvas.addEventListener("mousemove", onclick);
+canvas.addEventListener("mousemove", onclick); */
 
 /* ctx.fillRect(200, 200, 50, 200);
 ctx.fillRect(400, 200, 50, 200);
