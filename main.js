@@ -93,7 +93,7 @@ ctx.fillRect(260 - 40, 200 - 30, 60, 200);
 
 ctx.arc(250, 100, 50, 0, 2 * Math.PI);
 ctx.fill();
-
+// beginPath 로 이전의 환경을 끊어준다.
 ctx.beginPath();
 ctx.fillStyle = "white";
 
